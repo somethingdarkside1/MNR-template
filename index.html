@@ -17,412 +17,354 @@
     
     <title>[Your Site Title] | [Your Tagline]</title>
     
-    <!-- Option 1: Future Circuit -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Chakra+Petch:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Option 2: Neon Pulse 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Exo+2:wght@400;600&display=swap" rel="stylesheet">-->
-    
-    <!-- Option 3: Data Stream 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">-->
-    
-    <!-- Option 4: Quantum Code 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate&family=Syne:wght@400;600&display=swap" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-            /* =========================================
-           Core Variables & Design System
-           Customize these variables to change the entire theme
-           ========================================= */
-        :root {
-            --primary-color: #ff00ff;     /* Main brand color */
-            --secondary-color: #00ffff;    /* Accent color */
-            --background-color: #0c0c1d;   /* Page background */
-            --text-color: #fff;            /* Main text color */
-            --gradient-start: #9333FF;     /* Gradient start color */
-            --gradient-end: #00ffff;       /* Gradient end color */
-            --heading-font: 'Share Tech Mono', monospace;
-            --body-font: 'Chakra Petch', sans-serif;
+    /* =========================================
+       Core Variables & Design System
+       ========================================= */
+    :root {
+        --primary-color: #ff00ff;     /* Main brand color */
+        --secondary-color: #00ffff;    /* Accent color */
+        --background-color: #0c0c1d;   /* Page background */
+        --text-color: #fff;            /* Main text color */
+        --gradient-start: #9333FF;     /* Gradient start color */
+        --gradient-end: #00ffff;       /* Gradient end color */
+        --heading-font: 'Orbitron', sans-serif;
+        --body-font: 'Exo 2', sans-serif;
+    }
+
+    /* =========================================
+       Base Styles & Reset 
+       ========================================= */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: var(--body-font);
+        background-color: var(--background-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    /* Accessibility Helper Class */
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+    }
+
+    /* =========================================
+       Layout Components 
+       ========================================= */
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        z-index: 2;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 40px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* =========================================
+       Logo Component 
+       ========================================= */
+    .logo {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 25px;
+        filter: drop-shadow(0 0 30px rgba(147, 51, 255, 0.5));
+    }
+
+    /* =========================================
+       Title Component 
+       ========================================= */
+    .title {
+        font-family: var(--heading-font);
+        font-size: 38px;
+        letter-spacing: 3px;
+        margin: 0 0 30px;
+        color: var(--text-color);
+        position: relative;
+        text-align: center;
+        opacity: 0.9;
+        user-select: none;
+        animation: titlePulse 3s infinite;
+    }
+
+    /* Title glitch effects */
+    .title::before,
+    .title::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--background-color);
+    }
+
+    .title::before {
+        left: 2px;
+        text-shadow: -2px 0 var(--secondary-color);
+        animation: glitch-1 2s infinite linear alternate-reverse;
+    }
+
+    .title::after {
+        left: -2px;
+        text-shadow: 2px 0 var(--gradient-start);
+        animation: glitch-2 3s infinite linear alternate-reverse;
+    }
+
+    /* =========================================
+       Bio Section Component 
+       ========================================= */
+    .bio-container {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: left;
+        opacity: 0;
+        transform: translateY(20px);
+        padding: 25px;
+        animation: fadeIn 0.8s ease forwards;
+        animation-delay: 0.5s;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+    }
+
+    .bio-text {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0 0 15px;
+        color: var(--text-color);
+    }
+
+    .bio-signature {
+        margin: 6px 0 20px;
+        font-family: var(--heading-font);
+        font-size: 18px;
+        color: var(--text-color);
+        letter-spacing: 1px;
+        cursor: default;
+    }
+
+    /* =========================================
+       Projects Section Component 
+       ========================================= */
+    .projects-section {
+        width: 100%;
+        max-width: 900px;
+        margin: 25px auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .project-card {
+        position: relative;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 255, 255, 0.15);
+        padding: 20px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        overflow: hidden;
+        text-decoration: none;
+        backdrop-filter: blur(5px);
+    }
+
+    .project-title {
+        font-family: var(--heading-font);
+        font-size: 18px;
+        color: var(--secondary-color);
+        margin: 0 0 10px;
+        letter-spacing: 1px;
+    }
+
+    .project-description {
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--secondary-color);
+        opacity: 0.7;
+    }
+
+    .project-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    /* =========================================
+       Button Component 
+       ========================================= */
+    .button-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .cyber-button {
+        position: relative;
+        color: var(--secondary-color);
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 255, 255, 0.2);
+        padding: 16px 32px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        font-family: var(--heading-font);
+        font-size: 16px;
+        transition: all 0.3s ease;
+        min-width: 120px;
+        text-align: center;
+        clip-path: polygon(
+            10px 0, 
+            calc(100% - 10px) 0, 
+            100% 10px,
+            100% calc(100% - 10px),
+            calc(100% - 10px) 100%,
+            10px 100%,
+            0 calc(100% - 10px),
+            0 10px
+        );
+    }
+
+    .cyber-button:hover {
+        background: rgba(0, 0, 0, 0.3);
+        border-color: var(--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+    }
+
+    .cyber-button:active {
+        transform: translateY(1px);
+    }
+
+    /* =========================================
+       Footer Component 
+       ========================================= */
+    .copyright {
+        text-align: center;
+        padding: 20px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        margin-top: auto;
+    }
+
+    .copyright a {
+        color: var(--secondary-color);
+        text-decoration: none;
+    }
+
+    /* =========================================
+       Animation Keyframes 
+       ========================================= */
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        /* =========================================
-           Base Styles & Reset
-           Essential for consistent cross-browser rendering
-           ========================================= */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: var(--body-font);
-            background-color: var(--background-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-        
-        /* Accessibility Helper Class */
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-        
-        /* =========================================
-           Layout Components
-           Core structural elements
-           ========================================= */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            z-index: 2;
-        }
-        
+    }
+
+    @keyframes titlePulse {
+        0%, 100% { opacity: 0.9; }
+        50% { opacity: 1; }
+    }
+
+    @keyframes glitch-1 {
+        0%, 100% { clip-path: inset(50% 0 30% 0); }
+        20% { clip-path: inset(33% 0 66% 0); }
+        40% { clip-path: inset(10% 0 61% 0); }
+        60% { clip-path: inset(83% 0 4% 0); }
+        80% { clip-path: inset(91% 0 17% 0); }
+    }
+
+    @keyframes glitch-2 {
+        0%, 100% { clip-path: inset(25% 0 58% 0); }
+        20% { clip-path: inset(75% 0 13% 0); }
+        40% { clip-path: inset(46% 0 14% 0); }
+        60% { clip-path: inset(72% 0 3% 0); }
+        80% { clip-path: inset(15% 0 79% 0); }
+    }
+
+    /* =========================================
+       Responsive Design 
+       ========================================= */
+    @media (max-width: 768px) {
         .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 40px;
-            gap: 15px;
-            width: 100%;
-            box-sizing: border-box;
+            padding: 10px 15px;
         }
         
-        /* =========================================
-           Logo Component
-           Customize the logo size and effects
-           ========================================= */
         .logo {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 15px;
-            filter: drop-shadow(0 0 30px rgba(147, 51, 255, 0.5));
-            align-self: center;
+            width: 180px;
+            height: 180px;
         }
-        
-        /* =========================================
-           Title Component
-           Main site heading with glitch effect
-           ========================================= */
+
         .title {
-            font-family: var(--heading-font);
-            font-size: 38px;
-            letter-spacing: 3px;
-            margin: 0 0 5px;
-            color: var(--text-color);
-            position: relative;
-            text-shadow: 0 0 20px rgba(147, 51, 255, 0.3);
-            align-self: center;
-            text-align: center;
-            opacity: 0.9;
-            user-select: none;
-            animation: titlePulse 3s infinite;
+            font-size: 32px;
         }
-        
-        /* Title glitch effects */
-        .title::before,
-        .title::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--background-color);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
-        
-        .title::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--secondary-color);
-            animation: glitch-1 2s infinite linear alternate-reverse;
-        }
-        
-        .title::after {
-            left: -2px;
-            text-shadow: 2px 0 var(--primary-color);
-            animation: glitch-2 3s infinite linear alternate-reverse;
-        }
-        
-        /* =========================================
-           Bio Section Component
-           Main content area with glass effect
-           ========================================= */
-        .bio-container {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: left;
-            opacity: 0;
-            transform: translateY(20px);
-            padding: 25px;
-            animation: fadeIn 0.8s ease forwards;
-            animation-delay: 0.5s;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .bio-text {
-            font-size: 16px;
-            line-height: 1.5;
-            margin: 0 0 15px;
-            color: rgba(255, 255, 255, 0.95);
-        }
-        
-        /* Bio signature with hover effect */
-        .bio-signature {
-            margin: 6px 0 10px;
-            font-family: var(--heading-font);
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.95);
-            letter-spacing: 1px;
-            text-align: left;
-            cursor: default;
-        }
-        
-        /* Button wrapper styles */
-        .button-wrapper {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
-        /* =========================================
-           Projects Section Component
-           Grid layout for project cards
-           ========================================= */
+
         .projects-section {
-            width: 100%;
-            max-width: 900px;
-            margin: 25px auto 15px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr;
         }
-        
-        .project-card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(0, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
-            text-decoration: none;
-            backdrop-filter: blur(5px);
+
+        .button-wrapper {
+            gap: 15px;
         }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(0, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-        }
-        
-        .project-title {
-            font-family: var(--heading-font);
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-        
-        .project-description {
-            font-size: 16px;
-            line-height: 1.5;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        /* =========================================
-           Cyberpunk Button Component
-           Custom styled buttons with hover effects
-           ========================================= */
+
         .cyber-button {
-            position: relative;
-            color: var(--gradient-end);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            padding: 16px 32px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            font-family: var(--heading-font);
-            font-size: 16px;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            min-width: 120px;
-            text-align: center;
-            clip-path: polygon(
-                10px 0, 
-                calc(100% - 10px) 0, 
-                100% 10px,
-                100% calc(100% - 10px),
-                calc(100% - 10px) 100%,
-                10px 100%,
-                0 calc(100% - 10px),
-                0 10px
-            );
-        }
-        
-        .cyber-button:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
-        }
-        
-        .cyber-button:active {
-            transform: translateY(1px);
-        }
-        
-        .cyber-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(0, 255, 255, 0.2),
-                transparent
-            );
-            transition: 0.5s;
         }
-        
-        .cyber-button:hover::before {
-            left: 100%;
-        }
-        
-        /* =========================================
-           Footer Styles
-           ========================================= */
-        .copyright {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: auto;
-        }
-        
-        .copyright a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .copyright a:hover {
-            color: var(--primary-color);
-        }
-        
-        /* =========================================
-           Animation Keyframes
-           Custom animations for various elements
-           ========================================= */
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes titlePulse {
-            0%, 100% { opacity: 0.9; }
-            50% { opacity: 1; }
-        }
-        
-        @keyframes glitch-1 {
-            0%, 100% { clip-path: inset(50% 0 30% 0); }
-            20% { clip-path: inset(33% 0 66% 0); }
-            40% { clip-path: inset(10% 0 61% 0); }
-            60% { clip-path: inset(83% 0 4% 0); }
-            80% { clip-path: inset(91% 0 17% 0); }
-        }
-        
-        @keyframes glitch-2 {
-            0%, 100% { clip-path: inset(25% 0 58% 0); }
-            20% { clip-path: inset(75% 0 13% 0); }
-            40% { clip-path: inset(46% 0 14% 0); }
-            60% { clip-path: inset(72% 0 3% 0); }
-            80% { clip-path: inset(15% 0 79% 0); }
-        }
-        
-        /* =========================================
-           Responsive Design
-           Mobile-first approach for different screen sizes
-           ========================================= */
-        @media (max-width: 768px) {
-            .main-content {
-                padding: 10px 15px;
-            }
-            
-            .logo {
-                width: 180px;
-                height: 180px;
-            }
-        
-            .title {
-                font-size: 32px;
-                margin-bottom: 15px;
-            }
-        
-            .projects-section {
-                grid-template-columns: 1fr;
-            }
-        
-            .button-wrapper {
-                flex-direction: column;
-            }
-        
-            .cyber-button {
-                width: 100%;
-            }
-        }
+    }
     </style>
 </head>
 <body>
-    <!-- Background Canvas for Particle Animation -->
+    <!-- Background Canvas -->
     <canvas id="particleCanvas" class="background" aria-hidden="true"></canvas>
     
     <!-- Main Content Container -->
     <main id="container" class="container" role="main">
         <div class="main-content">
-            <!-- Animated Logo SVG - Replace with your own logo -->
+            <!-- Logo -->
             <svg class="logo" viewBox="0 0 100 100" role="img" aria-labelledby="logoTitle logoDesc">
                 <title id="logoTitle">[Your Logo Title]</title>
                 <desc id="logoDesc">[Your Logo Description]</desc>
                 <defs>
                     <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <!-- Customize gradient colors -->
-                        <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:1">
+                        <stop offset="0%" style="stop-color:#9333FF;stop-opacity:1">
                             <animate attributeName="stop-color" 
-                                values="#ff00ff;#9000ff;#ff00ff" 
+                                values="#9333FF;#7B00FF;#9333FF" 
                                 dur="8s" 
                                 repeatCount="indefinite" />
                         </stop>
@@ -433,7 +375,6 @@
                                 repeatCount="indefinite" />
                         </stop>
                     </linearGradient>
-                    <!-- Glow effect filter -->
                     <filter id="glow">
                         <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                         <feMerge>
@@ -442,15 +383,14 @@
                         </feMerge>
                     </filter>
                 </defs>
-                <!-- Replace with your logo SVG path -->
                 <g id="triangleGroup" transform="translate(0, 10)">
                     <polygon points="50,5 5,95 95,95" fill="url(#logoGradient)" filter="url(#glow)" />
                 </g>
             </svg>
 
-            <h1 id="mainTitle" class="title">[Your Site Title]</h1>
+            <h1 id="mainTitle" class="title" data-text="[Your Site Title]">[Your Site Title]</h1>
             
-            <!-- Bio Section - Replace with your content -->
+            <!-- Bio Section -->
             <section class="bio-container" aria-labelledby="about-section">
                 <h2 id="about-section" class="visually-hidden">About Section</h2>
                 <p class="bio-text">[Your introduction paragraph]</p>
@@ -461,25 +401,42 @@
                     <p>- [Your Name]</p>
                 </div>
                 <div class="button-wrapper">
-                    <a class="cyber-button" href="mailto:[your-email]" aria-label="Fill this">Button 1</a>
-                    <a class="cyber-button" href="[your-github]" aria-label="Fill this">Button 2</a>
-                    <a class="cyber-button" href="/blog" aria-label="Fill this">Button 3</a>
+                    <a class="cyber-button" href="mailto:[your-email]" aria-label="Contact via email">Button 1</a>
+                    <a class="cyber-button" href="[your-github]" aria-label="Visit GitHub">Button 2</a>
+                    <a class="cyber-button" href="/blog" aria-label="Visit blog">Button 3</a>
                 </div>
             </section>
 
-            <!-- Projects Section - Replace with your projects -->
+            <!-- Projects Section -->
             <section class="projects-section" aria-labelledby="projects-title">
                 <h2 id="projects-title" class="visually-hidden">Projects</h2>
                 
-                <!-- Project Card Template -->
                 <a href="[project-url]" class="project-card" aria-labelledby="project-1-title">
                     <h3 id="project-1-title" class="project-title">[Project Title]</h3>
                     <div class="project-description">
                         [Project description goes here. Keep it concise but informative.]
                     </div>
                 </a>
-                
-                <!-- Add more project cards as needed -->
+<a href="[project-url]" class="project-card" aria-labelledby="project-2-title">
+                    <h3 id="project-2-title" class="project-title">[Project Title]</h3>
+                    <div class="project-description">
+                        [Project description goes here. Keep it concise but informative.]
+                    </div>
+                </a>
+
+                <a href="[project-url]" class="project-card" aria-labelledby="project-3-title">
+                    <h3 id="project-3-title" class="project-title">[Project Title]</h3>
+                    <div class="project-description">
+                        [Project description goes here. Keep it concise but informative.]
+                    </div>
+                </a>
+
+                <a href="[project-url]" class="project-card" aria-labelledby="project-4-title">
+                    <h3 id="project-4-title" class="project-title">[Project Title]</h3>
+                    <div class="project-description">
+                        [Project description goes here. Keep it concise but informative.]
+                    </div>
+                </a>
             </section>
         </div>
         
@@ -491,13 +448,6 @@
 
     <!-- Particle Animation Script -->
     <script>
-    /**
-     * Cyberpunk Particle Animation System
-     * Creates an interactive background with glowing particles and connections
-     * 
-     * Customization: Adjust SETTINGS object below to modify the animation
-     */
-    
     // Initialize canvas and context
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
@@ -508,29 +458,24 @@
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
 
-    // Animation settings - Customize these values
+    // Animation settings
     const SETTINGS = {
         NODE_COUNT: Math.min(50, Math.floor((canvasWidth * canvasHeight) / 20000)),
-        MAX_DISTANCE: 200,     // Maximum connection distance between particles
+        MAX_DISTANCE: 200,
         BASE_PARTICLE_SIZE: 2.5,
         HUE_RANGE: { 
-            start: 170,        // Starting hue value
-            range: 60          // Hue variation range
+            start: 170,
+            range: 60
         },
         ANIMATION_SPEED: 0.001
     };
 
-    /**
-     * CoreNode class
-     * Represents individual particles in the animation
-     */
     class CoreNode {
         constructor() {
             this.TWO_PI = Math.PI * 2;
             this.reset();
         }
 
-        // Initialize node properties
         reset() {
             // Position
             this.x = Math.random() * canvasWidth;
@@ -551,29 +496,18 @@
             this.pulsePhase = Math.random() * this.TWO_PI;
         }
 
-        /**
-         * Update node position and properties each frame
-         */
         update() {
-            // Update orbital movement
             this.angle += this.orbitSpeed + (Math.random() - 0.5) * 0.002;
             this.x = this.centerX + Math.cos(this.angle) * this.orbitRadius;
             this.y = this.centerY + Math.sin(this.angle) * this.orbitRadius;
 
-            // Update visual effects
             this.pulsePhase += 0.02;
             this.alpha = this.baseAlpha * (0.7 + Math.sin(this.pulsePhase) * 0.3);
 
-            // Handle boundaries
             this.handleScreenWrapping();
-            
-            // Apply subtle drift
             this.applyDrift();
         }
 
-        /**
-         * Wrap nodes around screen edges
-         */
         handleScreenWrapping() {
             if (this.centerX < -this.orbitRadius) this.centerX = canvasWidth + this.orbitRadius;
             if (this.centerX > canvasWidth + this.orbitRadius) this.centerX = -this.orbitRadius;
@@ -581,18 +515,12 @@
             if (this.centerY > canvasHeight + this.orbitRadius) this.centerY = -this.orbitRadius;
         }
 
-        /**
-         * Add subtle random movement
-         */
         applyDrift() {
             const drift = 0.4;
             this.centerX += (Math.random() - 0.5) * drift;
             this.centerY += (Math.random() - 0.5) * drift;
         }
 
-        /**
-         * Render node with glow effect
-         */
         draw() {
             // Create glow gradient
             const gradient = ctx.createRadialGradient(
@@ -615,9 +543,6 @@
             ctx.fill();
         }
 
-        /**
-         * Create connection between nodes with effects
-         */
         connectTo(other) {
             const dx = other.x - this.x;
             const dy = other.y - this.y;
@@ -626,28 +551,13 @@
             if (distanceSquared > SETTINGS.MAX_DISTANCE * SETTINGS.MAX_DISTANCE) return;
             
             const distance = Math.sqrt(distanceSquared);
-            const time = performance.now() * SETTINGS.ANIMATION_SPEED;
             const alpha = (1 - distance / SETTINGS.MAX_DISTANCE) * Math.min(this.alpha, other.alpha);
 
             // Draw connection line
-            this.drawMainConnection(other, distance, alpha);
-            
-            // Add special effects
-            this.drawDataEffects(other, distance, alpha, time);
-            this.drawEnergyPulse(distance, alpha);
-        }
-
-        /**
-         * Draw main connection line with gradient
-         */
-        drawMainConnection(other, distance, alpha) {
-            // Create gradient
             const gradient = ctx.createLinearGradient(this.x, this.y, other.x, other.y);
             gradient.addColorStop(0, `hsla(${this.hue}, 100%, 70%, ${alpha})`);
-            gradient.addColorStop(0.5, `hsla(${(this.hue + other.hue)/2}, 100%, 90%, ${alpha * 1.2})`);
             gradient.addColorStop(1, `hsla(${other.hue}, 100%, 70%, ${alpha})`);
 
-            // Draw line
             ctx.beginPath();
             ctx.strokeStyle = gradient;
             ctx.lineWidth = Math.max(0.5, (1 - distance / SETTINGS.MAX_DISTANCE) * 2);
@@ -662,58 +572,12 @@
             ctx.stroke();
             ctx.globalCompositeOperation = 'source-over';
         }
-
-        /**
-         * Create data particle effects
-         */
-        drawDataEffects(other, distance, alpha, time) {
-            const dx = other.x - this.x;
-            const dy = other.y - this.y;
-            const particleCount = Math.min(Math.floor(distance / 30), 8);
-
-            for (let i = 0; i < particleCount; i++) {
-                const ratio = (i / particleCount + time) % 1;
-                const x = this.x + dx * ratio;
-                const y = this.y + dy * ratio;
-                
-                if (Math.random() < 0.7) {
-                    // Create chromatic aberration effect
-                    ctx.fillStyle = `hsla(${this.hue - 30}, 100%, 70%, ${alpha})`;
-                    ctx.fillRect(x - 1, y - 1, 2, 2);
-                    ctx.fillStyle = `hsla(${this.hue + 30}, 100%, 70%, ${alpha})`;
-                    ctx.fillRect(x + 1, y + 1, 2, 2);
-                }
-            }
-        }
-
-        /**
-         * Add energy pulse effects
-         */
-        drawEnergyPulse(distance, alpha) {
-            if (Math.random() < 0.02) {
-                ctx.globalCompositeOperation = 'screen';
-                const pulseGradient = ctx.createRadialGradient(
-                    this.x, this.y, 0,
-                    this.x, this.y, distance * 0.5
-                );
-                pulseGradient.addColorStop(0, `hsla(${this.hue}, 100%, 70%, ${alpha * 0.5})`);
-                pulseGradient.addColorStop(1, 'transparent');
-                
-                ctx.beginPath();
-                ctx.fillStyle = pulseGradient;
-                ctx.arc(this.x, this.y, distance * 0.5, 0, this.TWO_PI);
-                ctx.fill();
-                ctx.globalCompositeOperation = 'source-over';
-            }
-        }
     }
 
-    // Initialize node array
+    // Initialize nodes array
     const nodes = [];
 
-    /**
-     * Create initial set of particles
-     */
+    // Create initial set of nodes
     function createNodes() {
         nodes.length = 0;
         for (let i = 0; i < SETTINGS.NODE_COUNT; i++) {
@@ -721,9 +585,7 @@
         }
     }
 
-    /**
-     * Main animation loop
-     */
+    // Main animation loop
     function animate() {
         requestAnimationFrame(animate);
         
@@ -735,7 +597,6 @@
         // Update and draw all nodes
         for (let i = 0; i < nodes.length; i++) {
             nodes[i].update();
-            // Connect with other nodes
             for (let j = i + 1; j < nodes.length; j++) {
                 nodes[i].connectTo(nodes[j]);
             }
@@ -743,9 +604,7 @@
         }
     }
 
-    /**
-     * Handle window resizing
-     */
+    // Handle window resizing
     function handleResize() {
         canvasWidth = window.innerWidth;
         canvasHeight = window.innerHeight;
@@ -767,3 +626,4 @@
     </script>
 </body>
 </html>
+                
