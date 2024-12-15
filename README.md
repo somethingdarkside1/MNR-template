@@ -4,21 +4,17 @@ A modern, responsive website template featuring a cyberpunk aesthetic with inter
 
 ## ✨ Features
 
-- Interactive particle background with customizable settings
-- Responsive glass-morphism design
+- Interactive particle background
+- Customizable settings
 - Glitch and glow animations
-- Five carefully selected font combinations
 - Customizable color schemes
 - Fully responsive layout
-- Accessible markup (WCAG compliant)
 - No dependencies required
-- Cross-browser compatible
 
 ## Table of Contents
 
-- [Demo](#demo)
+- [Features](#features)
 - [Quick Start](#quick-start)
-- [Detailed Setup](#detailed-setup)
 - [Customization](#customization)
   - [Colors](#colors)
   - [Fonts](#fonts)
@@ -30,36 +26,10 @@ A modern, responsive website template featuring a cyberpunk aesthetic with inter
 
 ## Quick Start
 
-1. Download or clone the repository:
-```bash
-git clone https://github.com/yourusername/cyberpunk-website-template.git
-```
-
-2. Open `index.html` in your preferred editor
-3. Replace placeholder content with your own
-4. Customize colors and fonts (see [Customization](#customization))
-5. Deploy to your hosting service
-
-## 📖 Detailed Setup
-
-### Prerequisites
-- Basic knowledge of HTML, CSS, and JavaScript
-- A code editor
-- A modern web browser
-
-### File Structure
-```
-cyberpunk-website-template/
-├── index.html
-├── preview.png
-├── README.md
-├── LICENSE
-└── assets/
-    ├── css/
-    │   └── style.css
-    └── js/
-        └── particles.js
-```
+1. Open `index.html` in your preferred editor
+2. Replace placeholder content with your own
+3. Customize colors and fonts (see [Customization](#customization))
+4. Deploy to your hosting service
 
 ## Customization
 
@@ -81,21 +51,6 @@ The template uses CSS variables for easy color customization. Edit these in the 
 ### Fonts
 
 Choose ONE font combination. Add the corresponding link to your HTML `<head>` and CSS variables to your stylesheet.
-
-#### 1. Tech Minimal (Default)
-```html
-<!-- HTML -->
-<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-```
-```css
-/* CSS */
-:root {
-    --heading-font: 'Major Mono Display', monospace;
-    --body-font: 'Inter', sans-serif;
-}
-```
-
-[Similar blocks for other font combinations...]
 
 ### Particle System
 
@@ -128,7 +83,7 @@ const SETTINGS = {
 - Decrease `MAX_DISTANCE` to reduce the number of connections
 - Increase `ANIMATION_SPEED` for smoother animation on powerful devices
 
-## 🏗️ Structure
+## Structure
 
 ### Main Sections
 
@@ -139,7 +94,7 @@ const SETTINGS = {
 </svg>
 ```
 
-#### Bio Section
+#### Biography Section
 ```html
 <section class="bio-container">
     <h2 id="about-section" class="visually-hidden">About</h2>
