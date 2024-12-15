@@ -2,7 +2,7 @@
 
 The template of [Midnight Nexus Records](https://midnightnexusrecords.com/).
 
-A modern, responsive website template featuring a cyberpunk aesthetic with interactive particle animations, glowing effects. Built with vanilla JavaScript and CSS, focusing on performance and customization. Built with Claude 3.5 Sonnet in about 20 minutes.
+A modern, responsive website template featuring a cyberpunk aesthetic with interactive particle animations, glowing effects. Built with vanilla JavaScript and CSS, focusing on performance and customization. Built with Claude 3.5 Sonnet in about 25 minutes, including documentation.
 
 ## Features
 
