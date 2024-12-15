@@ -38,277 +38,373 @@
     <link href="https://fonts.googleapis.com/css2?family=Syncopate&family=Syne:wght@400;600&display=swap" rel="stylesheet">-->
     
     <style>
-    /* =========================================
-       Core Variables & Design System
-       Customize these variables to change the entire theme
-       ========================================= */
-    :root {
-        --primary-color: #ff00ff;     /* Main brand color */
-        --secondary-color: #00ffff;    /* Accent color */
-        --background-color: #0c0c1d;   /* Page background */
-        --text-color: #fff;            /* Main text color */
-        --gradient-start: #9333FF;     /* Gradient start color */
-        --gradient-end: #00ffff;       /* Gradient end color */
-
-        --heading-font: 'Share Tech Mono', monospace;
-        --body-font: 'Chakra Petch', sans-serif;
-
-        /* Option 2: Orbitron */
-        /*
-        --heading-font: 'Orbitron', sans-serif;
-        --body-font: 'Exo 2', sans-serif;
-        */
-    
-        /* Option 3: VT323 */
-        /*
-        --heading-font: 'VT323', monospace;
-        --body-font: 'Space Grotesk', sans-serif;\
-        */
-    
-        /* Option 5: Syncopate */
-        /*
-        --heading-font: 'Syncopate', sans-serif;
-        --body-font: 'Syne', sans-serif;
-        */
-    }
-
-    /* =========================================
-       Base Styles & Reset
-       Essential for consistent cross-browser rendering
-       ========================================= */
-    body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: var(--body-font);
-        background-color: var(--background-color);
-        color: var(--text-color);
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    /* Accessibility Helper Class */
-    .visually-hidden {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-    }
-
-    /* =========================================
-       Layout Components
-       Core structural elements
-       ========================================= */
-    .background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-
-    .container {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        z-index: 2;
-    }
-
-    .main-content {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px 40px;
-        gap: 15px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* =========================================
-       Logo Component
-       Customize the logo size and effects
-       ========================================= */
-    .logo {
-        width: 220px;
-        height: 220px;
-        margin: 0 auto 15px;
-        filter: drop-shadow(0 0 30px rgba(147, 51, 255, 0.5));
-        align-self: center;
-    }
-
-    /* =========================================
-       Title Component
-       Main site heading with glitch effect
-       ========================================= */
-    .title {
-        font-family: var(--heading-font);
-        font-size: 38px;
-        letter-spacing: 3px;
-        margin: 0 0 5px;
-        color: var(--text-color);
-        position: relative;
-        text-shadow: 0 0 20px rgba(147, 51, 255, 0.3);
-        align-self: center;
-        text-align: center;
-        opacity: 0.9;
-        user-select: none;
-        animation: titlePulse 3s infinite;
-    }
-
-    /* Title glitch effects */
-    .title::before,
-    .title::after {
-        content: '[Your Site Title]'; /* Replace with your title */
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--background-color);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    /* =========================================
-       Bio Section Component
-       Main content area with glass effect
-       ========================================= */
-    .bio-container {
-        max-width: 700px;
-        margin: 0 auto;
-        text-align: left;
-        opacity: 0;
-        transform: translateY(20px);
-        padding: 25px;
-        animation: fadeIn 0.8s ease forwards;
-        animation-delay: 0.5s;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 12px;
-        backdrop-filter: blur(10px);
-    }
-
-    .bio-text {
-        font-size: 16px;
-        line-height: 1.5;
-        margin: 0 0 15px;
-        color: rgba(255, 255, 255, 0.95);
-    }
-
-    /* Bio signature with hover effect */
-    .bio-signature {
-        margin: 6px 0 10px;
-        font-family: var(--heading-font);
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.95);
-        letter-spacing: 1px;
-        text-align: left;
-        cursor: default;
-    }
-
-    /* =========================================
-       Projects Section Component
-       Grid layout for project cards
-       ========================================= */
-    .projects-section {
-        width: 100%;
-        max-width: 900px;
-        margin: 5px auto 15px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    /* Project card styling */
-    .project-card {
-        position: relative;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(0, 255, 255, 0.15);
-        padding: 20px;
-        border-radius: 12px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        overflow: hidden;
-        text-decoration: none;
-        backdrop-filter: blur(5px);
-    }
-
-    /* =========================================
-       Cyberpunk Button Component
-       Custom styled buttons with hover effects
-       ========================================= */
-    .cyber-button {
-        position: relative;
-        color: var(--gradient-end);
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(0, 255, 255, 0.2);
-        padding: 16px 32px;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        font-family: var(--heading-font);
-        font-size: 16px;
-        transition: all 0.3s ease;
-        overflow: hidden;
-        min-width: 120px;
-        text-align: center;
-        /* Clip path for geometric shape */
-        clip-path: polygon(
-            10px 0, 
-            calc(100% - 10px) 0, 
-            100% 10px,
-            100% calc(100% - 10px),
-            calc(100% - 10px) 100%,
-            10px 100%,
-            0 calc(100% - 10px),
-            0 10px
-        );
-    }
-
-    /* =========================================
-       Animation Keyframes
-       Custom animations for various elements
-       ========================================= */
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes titlePulse {
-        0%, 100% { opacity: 0.9; }
-        50% { opacity: 1; }
-    }
-
-    /* Add more of the original CSS here - truncated for brevity */
-
-    /* =========================================
-       Responsive Design
-       Mobile-first approach for different screen sizes
-       ========================================= */
-    @media (max-width: 768px) {
-        .main-content {
-            padding: 10px 15px;
+            /* =========================================
+           Core Variables & Design System
+           Customize these variables to change the entire theme
+           ========================================= */
+        :root {
+            --primary-color: #ff00ff;     /* Main brand color */
+            --secondary-color: #00ffff;    /* Accent color */
+            --background-color: #0c0c1d;   /* Page background */
+            --text-color: #fff;            /* Main text color */
+            --gradient-start: #9333FF;     /* Gradient start color */
+            --gradient-end: #00ffff;       /* Gradient end color */
+            --heading-font: 'Share Tech Mono', monospace;
+            --body-font: 'Chakra Petch', sans-serif;
         }
         
+        /* =========================================
+           Base Styles & Reset
+           Essential for consistent cross-browser rendering
+           ========================================= */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: var(--body-font);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        /* Accessibility Helper Class */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        
+        /* =========================================
+           Layout Components
+           Core structural elements
+           ========================================= */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            z-index: 2;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            gap: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* =========================================
+           Logo Component
+           Customize the logo size and effects
+           ========================================= */
         .logo {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 15px;
+            filter: drop-shadow(0 0 30px rgba(147, 51, 255, 0.5));
+            align-self: center;
         }
-
+        
+        /* =========================================
+           Title Component
+           Main site heading with glitch effect
+           ========================================= */
         .title {
-            font-size: 32px;
-            margin-bottom: 15px;
+            font-family: var(--heading-font);
+            font-size: 38px;
+            letter-spacing: 3px;
+            margin: 0 0 5px;
+            color: var(--text-color);
+            position: relative;
+            text-shadow: 0 0 20px rgba(147, 51, 255, 0.3);
+            align-self: center;
+            text-align: center;
+            opacity: 0.9;
+            user-select: none;
+            animation: titlePulse 3s infinite;
         }
-    }
-</style>
+        
+        /* Title glitch effects */
+        .title::before,
+        .title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background-color);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        .title::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--secondary-color);
+            animation: glitch-1 2s infinite linear alternate-reverse;
+        }
+        
+        .title::after {
+            left: -2px;
+            text-shadow: 2px 0 var(--primary-color);
+            animation: glitch-2 3s infinite linear alternate-reverse;
+        }
+        
+        /* =========================================
+           Bio Section Component
+           Main content area with glass effect
+           ========================================= */
+        .bio-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(20px);
+            padding: 25px;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 0.5s;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .bio-text {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0 0 15px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* Bio signature with hover effect */
+        .bio-signature {
+            margin: 6px 0 10px;
+            font-family: var(--heading-font);
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 1px;
+            text-align: left;
+            cursor: default;
+        }
+        
+        /* Button wrapper styles */
+        .button-wrapper {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        /* =========================================
+           Projects Section Component
+           Grid layout for project cards
+           ========================================= */
+        .projects-section {
+            width: 100%;
+            max-width: 900px;
+            margin: 25px auto 15px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .project-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+        
+        .project-title {
+            font-family: var(--heading-font);
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .project-description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* =========================================
+           Cyberpunk Button Component
+           Custom styled buttons with hover effects
+           ========================================= */
+        .cyber-button {
+            position: relative;
+            color: var(--gradient-end);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 16px 32px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-family: var(--heading-font);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            min-width: 120px;
+            text-align: center;
+            clip-path: polygon(
+                10px 0, 
+                calc(100% - 10px) 0, 
+                100% 10px,
+                100% calc(100% - 10px),
+                calc(100% - 10px) 100%,
+                10px 100%,
+                0 calc(100% - 10px),
+                0 10px
+            );
+        }
+        
+        .cyber-button:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+        }
+        
+        .cyber-button:active {
+            transform: translateY(1px);
+        }
+        
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(0, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+        
+        /* =========================================
+           Footer Styles
+           ========================================= */
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: auto;
+        }
+        
+        .copyright a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* =========================================
+           Animation Keyframes
+           Custom animations for various elements
+           ========================================= */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes titlePulse {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(50% 0 30% 0); }
+            20% { clip-path: inset(33% 0 66% 0); }
+            40% { clip-path: inset(10% 0 61% 0); }
+            60% { clip-path: inset(83% 0 4% 0); }
+            80% { clip-path: inset(91% 0 17% 0); }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(25% 0 58% 0); }
+            20% { clip-path: inset(75% 0 13% 0); }
+            40% { clip-path: inset(46% 0 14% 0); }
+            60% { clip-path: inset(72% 0 3% 0); }
+            80% { clip-path: inset(15% 0 79% 0); }
+        }
+        
+        /* =========================================
+           Responsive Design
+           Mobile-first approach for different screen sizes
+           ========================================= */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 10px 15px;
+            }
+            
+            .logo {
+                width: 180px;
+                height: 180px;
+            }
+        
+            .title {
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+        
+            .projects-section {
+                grid-template-columns: 1fr;
+            }
+        
+            .button-wrapper {
+                flex-direction: column;
+            }
+        
+            .cyber-button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Background Canvas for Particle Animation -->
