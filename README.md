@@ -50,10 +50,6 @@ The template uses CSS variables for easy color customization. Edit these in the 
 }
 ```
 
-### Fonts
-
-Choose ONE font combination. Add the corresponding link to your HTML `<head>` and CSS variables to your stylesheet.
-
 ### Particle System
 
 The background animation can be customized in `particles.js`. Adjust these settings for different effects:
