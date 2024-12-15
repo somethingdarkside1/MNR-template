@@ -131,6 +131,8 @@ Under the following terms:
 - Attribution — Please include a link back to this repository or "Template by [Your Name]" in your project.
 
 ## Contact
+Vitali
+[Blog](http://v1tali.com)
+[Midnight Nexus Records](https://midnightnexusrecords.com/)
+[Analog Melody](https://analogmelody.com/)
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
-Project Link: [https://github.com/yourusername/cyberpunk-website-template](https://github.com/yourusername/cyberpunk-website-template)
