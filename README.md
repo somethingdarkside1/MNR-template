@@ -132,7 +132,10 @@ Under the following terms:
 
 ## Contact
 Vitali
+
 [Blog](http://v1tali.com)
+
 [Midnight Nexus Records](https://midnightnexusrecords.com/)
+
 [Analog Melody](https://analogmelody.com/)
 
