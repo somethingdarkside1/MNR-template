@@ -1,8 +1,10 @@
 # Midnight Nexus Records - Cyberpunk Website Template
 
-A modern, responsive website template featuring a cyberpunk aesthetic with interactive particle animations, glowing effects. Built with vanilla JavaScript and CSS, focusing on performance and customization.
+The template of [Midnight Nexus Records](https://midnightnexusrecords.com/).
 
-## ✨ Features
+A modern, responsive website template featuring a cyberpunk aesthetic with interactive particle animations, glowing effects. Built with vanilla JavaScript and CSS, focusing on performance and customization. Built with Claude 3.5 Sonnet in about 20 minutes.
+
+## Features
 
 - Interactive particle background
 - Customizable settings
@@ -117,7 +119,7 @@ const SETTINGS = {
 </section>
 ```
 
-## 📄 License
+## License
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
@@ -128,7 +130,7 @@ You are free to:
 Under the following terms:
 - Attribution — Please include a link back to this repository or "Template by [Your Name]" in your project.
 
-## 📧 Contact
+## Contact
 
 Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
 Project Link: [https://github.com/yourusername/cyberpunk-website-template](https://github.com/yourusername/cyberpunk-website-template)
