@@ -124,7 +124,7 @@ You are free to:
 - Adapt — remix, transform, and build upon the material for any purpose, even commercially
 
 Under the following terms:
-- Attribution — Please include a link back to this repository or "Template by [Blog](http://v1tali.com)" text in your project.
+- Attribution — Please include a link back to this repository or "Template by [v1tali](http://v1tali.com)" text in your project.
 
 ## Contact
 Vitali
