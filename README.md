@@ -14,7 +14,7 @@ A modern, responsive website template featuring a cyberpunk aesthetic with inter
 - No dependencies required
 - Cross-browser compatible
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Demo](#demo)
 - [Quick Start](#quick-start)
@@ -28,7 +28,7 @@ A modern, responsive website template featuring a cyberpunk aesthetic with inter
 - [Contributing](#contributing)
 - [License](#license)
 
-#demo 🚀 Quick Start
+## Quick Start
 
 1. Download or clone the repository:
 ```bash
@@ -61,7 +61,7 @@ cyberpunk-website-template/
         └── particles.js
 ```
 
-## 🎨 Customization
+## Customization
 
 ### Colors
 
@@ -162,24 +162,6 @@ const SETTINGS = {
 </section>
 ```
 
-## 🌐 Browser Support
-
-- Chrome (last 2 versions)
-- Firefox (last 2 versions)
-- Safari (last 2 versions)
-- Edge (last 2 versions)
-- Opera (last 2 versions)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 📄 License
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
@@ -191,14 +173,7 @@ You are free to:
 Under the following terms:
 - Attribution — Please include a link back to this repository or "Template by [Your Name]" in your project.
 
-## 🙏 Acknowledgments
-
-- Font combinations inspired by modern cyberpunk aesthetics
-- Particle system inspired by digital connection visualizations
-- Glass-morphism effects based on modern UI trends
-
 ## 📧 Contact
 
 Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
-
 Project Link: [https://github.com/yourusername/cyberpunk-website-template](https://github.com/yourusername/cyberpunk-website-template)
